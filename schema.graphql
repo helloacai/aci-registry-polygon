@@ -1,0 +1,16 @@
+type Registered @entity(immutable: true) {
+  id: Bytes!
+  uid: Bytes! # bytes32
+  executor: Bytes! # address
+  aci_uid: Bytes! # bytes32
+  aci_executor: Bytes! # address
+  aci_owner: Bytes! # address
+  aci_cost: BigInt! # uint32
+  aci_costPer: Int! # uint8
+  aci_metadataURI: String! # string
+  aci_apiurl: String! # string
+  aci_status: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
