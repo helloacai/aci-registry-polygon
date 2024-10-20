@@ -6,11 +6,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: ACIRegistry
-    network: polygon-amoy
+    network: matic
     source:
-      address: "0x815329fD0D9514C41dc84AB58A71Efc88f9DE565"
+      address: "0x67d75De4eEA0b11B40fd0EdA5bDb2B95319Ce9e1"
       abi: ACIRegistry
-      startBlock: 13335317
+      startBlock: 63257650
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -24,3 +24,16 @@ dataSources:
         - event: Registered(indexed bytes32,indexed address,(bytes32,address,address,uint32,uint8,string,string,uint8))
           handler: handleRegistered
       file: ./src/aci-registry.ts
+templates:
+  - name: ACIMetadata
+    kind: file/ipfs
+    mapping:
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/aci-metadata.ts
+      handler: handleMetadata
+      entities:
+        - ACIMetadata
+      abis:
+        - name: ACIRegistry
+          file: ./abis/ACIRegistry.json

@@ -1,13 +1,13 @@
 {
-  "name": "aciregistry-polygon-amoy",
+  "name": "aci-registry-polygon",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ aciregistry-polygon-amoy",
-    "create-local": "graph create --node http://localhost:8020/ aciregistry-polygon-amoy",
-    "remove-local": "graph remove --node http://localhost:8020/ aciregistry-polygon-amoy",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 aciregistry-polygon-amoy",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ aci-registry-polygon",
+    "create-local": "graph create --node http://localhost:8020/ aci-registry-polygon",
+    "remove-local": "graph remove --node http://localhost:8020/ aci-registry-polygon",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 aci-registry-polygon",
     "test": "graph test"
   },
   "dependencies": {

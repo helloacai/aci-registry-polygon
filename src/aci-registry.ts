@@ -1,12 +1,13 @@
 import { Registered as RegisteredEvent } from "../generated/ACIRegistry/ACIRegistry"
 import { Registered } from "../generated/schema"
+import { ACIMetadata } from "../generated/templates"
 
 export function handleRegistered(event: RegisteredEvent): void {
   let entity = new Registered(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.uid = event.params.uid
-  entity.executor = event.params.executor
+  entity.creator = event.params.executor
   entity.aci_uid = event.params.aci.uid
   entity.aci_executor = event.params.aci.executor
   entity.aci_owner = event.params.aci.owner
@@ -15,6 +16,9 @@ export function handleRegistered(event: RegisteredEvent): void {
   entity.aci_metadataURI = event.params.aci.metadataURI
   entity.aci_apiurl = event.params.aci.apiurl
   entity.aci_status = event.params.aci.status
+
+  ACIMetadata.create(entity.aci_metadataURI);
+  entity.metadata = entity.aci_metadataURI;
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
